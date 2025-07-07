@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Aurality Playlist Maker</title>
+        <link rel="stylesheet" href="../static/datastyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../static/allPages.js"></script> 
+        <script src="../static/aboutPage.js"></script>  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+</html>
+
+<h1>About Aurality</h1>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Search Page</a></li>
+            <!-- <li><a href="/playlist">Your Playlist</a></li> -->
+            <li><a href="/about/">About</a></li>
+        </ul>
+    </nav>
+
+    <h2>User guide</h2>
+    
+    <div class = "about_small_text">
+        <p>Use our <a href="/">Search Page</a> to filter and search for songs.<br></p>
+        <p><strong>How to search:</strong></p>
+            <ol>
+                <li>Navigate to the <a href="/">Search Page</a></li>
+                <li>Use the dropdown filters to set min/max filter values</li>
+                <li>Type in the search bar</li>
+                <li>Change the searchbar's <b>song/artist dropdown</b> to search by either <b>song name</b> or <b>artist name</b></li>
+                <li>Press <i>Apply Filters</i>, the search icon, or the enter key to search</li>
+            </ol>
+        <p><i>Notes</i>:
+            <ul>
+                <li> The <b>filters</b> and the <b>search bar</b> narrow your search, but using <i>both</i> are not necessary.</li>
+                <li> The Search Page displays total matching results, but only loads the top 20,000 search results accessible by the <i>Load more</i> button.</li>
+            </ul>
+        </p>
+        <p><i>Tip</i>: Use your browser's back button to return, then edit your previous searches.</p>
+
+        <h2>Our Dataset and Filter Descriptions</h2>
+
+        <p>Our dataset (sourced from <a href="https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks/data?select=spotify_data.csv" target="_blank">Kaggle</a>) includes over 200,000 songs released from 2000 to 2023, encompassing a variety of genres and artists.</p>
+        <p>Below are the parameters in the dataset, which you can filter on the <a href="/">Search Page</a>:</p>
+
+        <div class="dataset_description">
+            <ul>
+                <li>
+                    <h3>Genre</h3>
+                    <p>Genres in our dataset: alt-rock, dance, dancehall, detroit-techno, edm, electro, electronic, hard-rock, indie-pop, k-pop, minimal-techno, pop, power-pop, psych-rock, punk-rock, rock, rock-n-roll.</p>
+                </li>
+                <li>
+                    <h3>Key</h3>
+                    <p>Keys in our dataset: C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab, A, A#/Bb, B.</p>
+                </li>
+                <li>
+                    <h3>Mode</h3>
+                    <p>Modes in our dataset: Major and minor.</p>
+                </li>
+                <li>
+                    <h3>Tempo (BPM)</h3>
+                    <p>Speed of the song in beats per minute (BPM). A common tempo is 120 BPM.</p>
+                </li>
+                <li>
+                    <h3>Loudness (dB)</h3>
+                    <p>Measured in decibels (dB). Max loudness is 3.313 dB, but most values are negative.</p>
+                    <!-- <p>Measured in LUFS (<b>L</b>oudness <b>U</b>nits relative to <b>F</b>ull <b>S</b>cale), an industry standard for measuring perceived loudness over a duration of time, which more than just the sound pressure.</p> -->
+                </li>
+                <li>
+                    <h3>Duration (ms)</h3>
+                    <p>Song length in milliseconds (ms). A typical song is about 4 minutes or 240,000 ms.</p>
+                </li>
+                <li>
+                    <h3>Popularity</h3>
+                    <p>Scale from 0 to 100. Based on Spotify user engagement, but exact calculation is unclear (<a href="https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks/discussion/454816" target="_blank">source</a>).</p>
+                </li>
+                <li>
+                    <h3>Danceability</h3>
+                    <p>Measures how suitable a song is for dancing on a 0 to 1 scale.</p>
+                </li>
+                <li>
+                    <h3>Energy</h3>
+                    <p>Indicates a song's intensity and activity level on a 0 to 1 scale.</p>
+                </li>
+                <li>
+                    <h3>Valence</h3>
+                    <p>Measures musical positiveness on a 0 to 1 scale. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</p>
+                </li>
+                <li>
+                    <h3>Year</h3>
+                    <p>Year the song was released, ranging from 2000 to 2023.</p>
+                </li>
+            </ul>
+        </div>
+
+        <p><br>For more information on dataset attributes, visit the <a href="https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks/data?select=spotify_data.csv" target="_blank">Kaggle dataset</a>.</p>
+    </div>
+
+    <div class="artists">
+        <p>All artists in our dataset include</p>
+        <ul>
+            {% for artist in artists[:10] %}
+            <li class = "first_few_artists"> {{ artist }} </li>
+            {% endfor %}
+            {% for artist in artists[10:] %}
+            <li class="hidden_artists"> {{ artist }} </li>
+            {% endfor %}
+        </ul>
+        <button type="button" id="load_more_artists">Load more</button>
+    </div>
+    <button type="button" id="back_to_top">Back to top</button>
+</body>

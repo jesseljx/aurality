@@ -1,0 +1,373 @@
+/* TODO: make a div class that contains the form (searchbar and filter) and results. The results' position 
+can be adjusted by using position:relative and left/right/bottom/top. 
+
+Also, make sure that the resizeing thing works for input boxes in filters.
+
+Change background color?*/
+
+
+body {
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color:gainsboro;
+}
+
+h1 {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color:cadetblue;
+	color: whitesmoke;
+	text-align: center;
+    font-family: 'Lobster', sans-serif;
+    font-size: 2.7vw; 
+}
+
+h2 {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-bottom: 5px; /* Reduce space below h2 */
+    background-color: steelblue;
+    color: white;
+    text-align: center;
+    font-family: 'Lobster', sans-serif;
+    font-size: 2.2vw;
+    border-radius: 8px;
+}
+
+h3 {
+    padding-top: 0.1 em;
+    padding-bottom: 0.1 em;
+    margin-bottom: 0 px;
+    background-color: transparent;
+    color: darkslategray;
+    text-align: left;
+    font-family: 'Lobster', sans-serif;
+    font-size: 1.5vw;
+    padding-left: 1.5em;
+    border-left: 4px solid steelblue;
+}
+
+.about_small_text {
+    font-family: 'Lobster', sans-serif;
+}
+
+.dataset_description ul {
+    list-style-type: none;
+}
+
+.home_search_page {
+    display:flex;
+    align-content:stretch;
+    flex-wrap:nowrap;
+}
+
+.filters {
+    order:0;
+    top:6vw;
+    position:relative;
+    align-self: flex-start;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.filters input[type="submit"] {
+    width:8vw;
+    position:relative;
+    left:3vw;
+    font-size:1vw;
+    background-color: white;
+    border-radius: 0.5vw;
+    height:1.9vw;
+    cursor:pointer;
+    
+}
+
+.filters input[type="submit"]:hover {
+    background-color: aquamarine;
+}
+
+.search_and_results {
+    display: block;
+    order:1;
+    position:relative;
+    left:3%;
+    flex-grow:2;
+}
+
+.searchbar {
+    
+    display:flex;
+    background:#fff;
+    width:90vw;
+    height:2.6vw;
+    max-width:100%;
+    border-radius: 16px;
+    position:relative;
+    align-self: baseline;
+
+    right:3vw;
+    top:1vw;
+    
+}
+
+.searchbar input[type=text] {
+    font-size: 1.3vw;
+    
+    width: 90%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border:none;
+    order:0;
+    border-radius:10px;
+    position:relative;
+    left:1%;
+
+}
+
+.searchbar select {
+    border:0;
+    background:transparent;
+    outline:none;
+    
+    width:5.5%;
+    order:1;
+    position:relative;
+    left:1%;
+
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.3vw;
+    color:rgb(75, 84, 83);
+
+    cursor:pointer;
+}
+
+.searchbar input[type="submit"] {
+    order:2;
+    display:inline;
+    position:relative;
+   
+    background-color: transparent;
+    background-image: url(magnifying-glass-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+  
+    width: 1.5vw;
+    /* put the height and width of your image here */
+    cursor:pointer;
+    border: none;
+    left:1.5vw
+}
+
+
+nav li {
+    font-family: 'Lobster', sans-serif;
+    float: left;
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+
+nav ul {
+   border: 2px solid black;
+   list-style-type: none;
+   overflow: hidden;
+}
+
+nav li {
+   float: left;
+}
+
+nav li a {
+   display: block;
+   color: black;
+   text-decoration: none;
+   text-align: center;
+   padding: 14px 16px;
+}
+
+nav li a:hover {
+   color: white;
+   background-color: steelblue;
+}
+
+.mainlabel {
+    display:flex;
+    position:relative;
+    align-items:baseline;
+    margin-top:2vw;
+}
+
+.mainlabel_text{
+    display:inline;
+    font-size:1.15vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position:relative;
+    left:3%
+}
+
+.dropdown_regular {
+    display:inline;
+    position:relative;
+   
+    background-color: transparent;
+    background-image: url(caret-down-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* put the height and width of your image here */
+    height: 1.2vw;
+    width: 1.2vw;
+    border: none;
+}
+
+.dropdown_flipped {
+    display:inline;
+    position:relative;
+ 
+    background-color: transparent;
+    background-image: url(caret-down-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* put the height and width of your image here */
+    height: 1.2vw;
+    width: 1.2vw;
+    border: none;
+    transform:rotate(180deg)
+}
+
+.bound_specifier {
+    position:relative;
+    left:3vw;
+    margin-top:1vw
+
+}
+
+.bound {
+    position:relative;
+    left:3vw;
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.bound .sublabel {
+    flex:none;
+    align-self:flex-start;
+    font-size:1.1vw
+}
+.bound input[type="number"] {
+    width:4.3vw;
+    height:1.7vw;
+    flex:none;
+    align-self: flex-end;
+    position:relative;
+    right:80vw;
+    font-size:1vw;
+}
+
+.text_filter_dropdown {
+    position:relative;
+    left: 3%;
+}
+
+.filter_dropdown {
+    position:relative;
+    left: 6%;
+    font-size:1vw;
+}
+
+.results {
+    position:relative;
+    right:61vw;
+    top:7vw
+}
+
+.results p {
+    color: darkslategray;
+    text-align: left;
+    font-family: 'Lobster', sans-serif;
+    font-size: 1.1vw;
+    font-weight:bold;
+}
+
+.row {
+    background-color: rgb(236, 236, 236);
+    width:52vw;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left:3.3%;
+    border-bottom: 1px solid;
+}
+
+.hidden_row {
+    background-color: rgb(236, 236, 236);
+    width:52vw;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left:3.3%;
+    border-bottom: 1px solid;
+    display:none;
+}
+
+.song_info {
+    position:relative;
+    left:5%
+}
+
+.song_info li {
+    list-style-type: none;
+    position:relative;
+    right:5%
+}
+
+#load_more_results, #load_more_artists {
+    
+    font-family: 'Lobster', sans-serif;
+    width:8vw;
+    
+
+    font-size:1vw;
+    background-color: white;
+    border-radius: 0.5vw;
+    height:1.9vw;
+    cursor:pointer;
+
+    position:relative;
+    left:10vw;
+    margin-top: 2vw;
+    margin-bottom: 5vw;
+}
+
+#back_to_top {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 2.6vw; 
+    right: 2.6vw; 
+    
+    width:8vw;
+    padding:0.5vw; /* how far should the border be from center */
+   
+    background-color:white; /* Set a background color */
+    color: black; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    
+    border-radius: 0.5vw; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    font-family: 'Lobster', sans-serif;
+}
+
+#load_more_results:hover, #back_to_top:hover{
+    background-color: aquamarine;
+    cursor:pointer;
+
+}
+
+.first_few_artists {
+    font-family: 'Lobster', sans-serif;
+}
+
+.hidden_artists {
+    display:none;
+    font-family: 'Lobster', sans-serif;
+}

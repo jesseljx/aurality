@@ -1,0 +1,327 @@
+<html>
+
+<head>
+    <title>Aurality Playlist Maker</title>
+    <link rel="stylesheet" href="../static/datastyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/allPages.js"></script>
+    <script src="../static/searchPage.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    
+    <h1>Aurality Song Search</h1>
+
+<nav>
+    <ul>
+        <li><a href="/">Search Page</a></li>
+        <!-- <li><a href="/playlist">Your Playlist</a></li> -->
+        <li><a href="/about/">About</a></li>
+    </ul>
+</nav>
+
+<!-- <div>
+    <h2>Get new songs!</h2>
+    <form action="/answers">  Sends results to /answers path
+        <label="songName">Input Song Title:</label>
+        <input type="text" id="songName" name="songName">
+        <label="useGenre">Get Song of Same Genre?</label>
+        <input type="checkbox" id="useGenre" name="useGenre" value="use">
+        <input type="submit" value="Submit">
+    </form> 
+</div>  -->
+
+<div class="home_search_page">
+    
+    <!-- Set height and width to make vertical box. Set self-align to flex-start, set order to 0 -->
+    <form method="GET" action="/search" id="search-form">
+        <!-- Set self-align to flex-start, set order to 1, set display: block, set position: relative, left: x%-->
+        <div class ="search_and_results">
+            <div class="searchbar">
+                <label for="search_by" style="display:none">What field do you want to search by?</label>
+                <select id="search_by" name="search_by">
+                    <option value="track_name">song</option>
+                    <option value="artist">artist</option>
+                </select>
+                <label for="searchbox" style="display:none">Type something here to search</label>
+                <input type="text" id= "searchbox" placeholder="Search by..." name="substr">
+                <label for="search_submit" style="display:none">Searchbar submit button</label>
+                <input type="submit" id="search_submit" value="">
+             
+            </div>
+            <!-- <div class="results"> 
+                Results... to be  with buttons to add to playlist
+            </div> -->
+        </div>
+
+        <div class="filters">
+            <!-- <p>FILTERS</p> -->
+            <input type="submit" value="Apply Filters">
+            <div class="text_filter_dropdown">
+                <div class="mainlabel">
+                    <label for="sort_results_by" class="mainlabel_text">Sort results by</label>
+                    <select id="sort_results_by" name="sort_results_by" for="sort_results_by" class="filter_dropdown">
+                        <option value="popularity">popularity</option>
+                        <option value="key">key</option>
+                        <option value="mode">mode</option>
+                        <option value="genre">genre</option>
+                        <option value="track_name">track_name</option>
+                        <option value="track_id">track_id</option>
+                        <option value="artist">artist</option>
+                        <option value="tempo">tempo</option>
+                        <option value="duration_ms">duration_ms</option>
+                        <option value="year_released">year_released</option>
+                        <option value="danceability">danceability</option>
+                        <option value="energy">energy</option>
+                        <option value="loudness">loudness</option>
+                        <option value="valence">valence</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text_filter_dropdown">
+                <div class="mainlabel">
+                    <label for="genre" class="mainlabel_text">Genre</label>
+                    <select id="genre" name="genre" for="genre" class="filter_dropdown">
+                        <option value="">Any</option>
+                        <option value="alt-rock">alt-rock</option>
+                        <option value="dance">dance</option>
+                        <option value="dancehall">dancehall</option>
+                        <option value="detroit-techno">detroit-techno</option>
+                        <option value="edm">edm</option>
+                        <option value="electro">electro</option>
+                        <option value="electronic">electronic</option>
+                        <option value="hard-rock">hard-rock</option>
+                        <option value="indie-pop">indie-pop</option>
+                        <option value="k-pop">k-pop</option>
+                        <option value="minimal-techno">minimal-techno</option>
+                        <option value="pop">pop</option>
+                        <option value="power-pop">power-pop</option>
+                        <option value="psych-rock">psych-rock</option>
+                        <option value="punk-rock">punk-rock</option>
+                        <option value="rock">rock</option>
+                        <option value="rock-n-roll">rock-n-roll</option>
+                        <option value="techno">techno</option>
+                    </select>
+                </div>
+
+                <div class="mainlabel">
+                    <label for="key" class="mainlabel_text">Key</label>
+                    <select id="key" name="key" for="key" class="filter_dropdown">
+                        <option value="">Any</option>
+                        <option value="0">C</option>
+                        <option value="1">C#/Db</option>
+                        <option value="2">D</option>
+                        <option value="3">D#/Eb</option>
+                        <option value="4">E</option>
+                        <option value="5">F</option>
+                        <option value="6">F#/Gb</option>
+                        <option value="7">G</option>
+                        <option value="8">G#/Ab</option>
+                        <option value="9">A</option>
+                        <option value="10">A#/Bb</option>
+                        <option value="11">B</option>
+                    </select>
+                </div>
+        
+                <div class="mainlabel">
+                    <label for="mode" class="mainlabel_text">Mode</label>
+                    <!-- <label class="mainlabel" for="mode">Mode</label> -->
+                    <select id="mode" name="mode" for="mode" class="filter_dropdown">
+                        <option value="">Any</option>
+                        <option value="0">Minor</option>
+                        <option value="1">Major</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="tempo_dropdown" class="dropdown_regular" onclick="displayFilter('tempo_dropdown','tempo_specifier')"></button>
+                    <label for="tempo_dropdown" class="mainlabel_text">Tempo (BPM)</label>
+                </div>
+                <div class="bound_specifier" id = "tempo_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_tempo">Min</label>
+                        <input type="number" id="min_tempo" name="min_tempo" placeholder="0">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_tempo">Max</label>
+                        <input type="number" id="max_tempo" name="max_tempo" placeholder="500">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="loudness_dropdown" class="dropdown_regular" onclick="displayFilter('loudness_dropdown','loudness_specifier')"></button>
+                    <label for="loudness_dropdown" class="mainlabel_text">Loudness (dB)</label>
+                </div>
+                <div class="bound_specifier" id="loudness_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_loudness">Min</label>
+                        <input type="number" step="0.01" id="min_loudness" name="min_loudness" placeholder="-30.00">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_loudness">Max</label>
+                        <input type="number" step="0.01" id="max_loudness" name="max_loudness" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="duration_dropdown" class="dropdown_regular" onclick="displayFilter('duration_dropdown','duration_specifier')"></button>
+                    <label for="duration_dropdown" class="mainlabel_text">Duration (ms)</label>
+                </div>
+                <div class="bound_specifier" id="duration_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_duration">Min</label>
+                        <input type="number" id="min_duration" step="1" name="min_duration" placeholder="0">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_duration">Max</label>
+                        <input type="number" id="max_duration" step="1" name="max_duration" placeholder="600000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="popularity_dropdown" class="dropdown_regular" onclick="displayFilter('popularity_dropdown', 'popularity_specifier')"></button>
+                    <label for="popularity_dropdown" class="mainlabel_text">Popularity</label>
+                </div>
+                <div class="bound_specifier" id="popularity_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_popularity">Min</label>
+                        <input type="number" id="min_popularity" step="1" name="min_popularity" placeholder="0">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_popularity">Max</label>
+                        <input type="number" id="max_popularity" step="1" name="max_popularity" placeholder="100">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="danceability_dropdown" class="dropdown_regular" onclick="displayFilter('danceability_dropdown', 'danceability_specifier')"></button>
+                    <label for="danceability_dropdown" class="mainlabel_text">Danceability</label>
+                </div>
+                <div class="bound_specifier" id="danceability_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_danceability">Min</label>
+                        <input type="number" step="0.001" id="min_danceability" name="min_danceability" placeholder="0.000">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_danceability">Max</label>
+                        <input type="number" step="0.001" id="max_danceability" name="max_danceability" placeholder="1.000">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="energy_dropdown" class="dropdown_regular" onclick="displayFilter('energy_dropdown', 'energy_specifier')"></button>
+                    <label for="energy_dropdown" class="mainlabel_text">Energy</label>
+                </div>
+                <div class="bound_specifier" id="energy_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_energy">Min</label>
+                        <input type="number" step="0.001" id="min_energy" name="min_energy" placeholder="0.000">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_energy">Max</label>
+                        <input type="number" step="0.001" id="max_energy" name="max_energy" placeholder="1.000">
+                    </div>
+                </div>
+            </div>
+        
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id ="valence_dropdown" class="dropdown_regular" onclick="displayFilter('valence_dropdown', 'valence_specifier')"></button>
+                    <label for="valence_dropdown" class="mainlabel_text">Valence</label>
+                </div>
+                <div class="bound_specifier" id = "valence_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_valence">Min</label>
+                        <input type="number" step="0.001" id="min_valence" name="min_valence" placeholder="0.000">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_valence">Max</label>
+                        <input type="number" step="0.001" id="max_valence" name="max_valence" placeholder="1.000">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter">
+                <div class="mainlabel">
+                    <button type="button" id="year_dropdown" class="dropdown_regular" onclick="displayFilter('year_dropdown', 'year_specifier')"></button> <!--the javascript func no exist :(-->
+                    <label for="year_dropdown" class="mainlabel_text">Year</label>
+                </div>
+                <div class="bound_specifier" id="year_specifier" style="display:none">
+                    <div class="bound">
+                        <label class="sublabel" for="min_year">Min</label>
+                        <input type="number" id="min_year" name="min_year" placeholder="1980">
+                    </div>
+                    <div class="bound">
+                        <label class="sublabel" for="max_year">Max</label>
+                        <input type="number" id="max_year" name="max_year" placeholder="2020">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+    <div class="results">
+        <p>Showing <span>{{ num_first_few_rows }}</span> of {{ num_all_rows }} results</p>
+        {% for row in first_few_rows %}
+            <div class="row">
+                <h3>{{ row[1] }}</h3>
+                <h4>artist: {{ row[0] }}</h4>
+                <ul class="song_info">
+                    <li class="year">{{ row[4] }}</li>
+                    <li class="genre">genre: {{ row[5] }}</li>
+                    <li class="misc_info">key: {{ row[8] }} {{ row[10] }} |  tempo: {{ row[12] }} | duration: {{ row[13] }}ms | danceability: {{ row[6] }} </li>
+                    <li class="misc_info">energy: {{ row[7] }} | valence: {{ row[11] }} | loudness: {{ row[9] }} | popularity: {{ row[3] }}  </li>
+                </ul>
+            </div> 
+        {% endfor %}
+        {% for row in hidden_rows %}
+            <div class="hidden_row">
+                <h3>{{ row[1] }}</h3>
+                <h4>artist: {{ row[0] }}</h4>
+                <ul class="song_info">
+                    <li class="year">{{ row[4] }}</li>
+                    <li class="genre">genre: {{ row[5] }}</li>
+                    <li class="misc_info">key: {{ row[8] }} {{ row[10] }} |  tempo: {{ row[12] }} | duration: {{ row[13] }}ms | danceability: {{ row[6] }} </li>
+                    <li class="misc_info">energy: {{ row[7] }} | valence: {{ row[11] }} | loudness: {{ row[9] }} | popularity: {{ row[3] }}  </li>
+                </ul>
+            </div> 
+        {% endfor %}
+        <p>Showing <span>{{ num_first_few_rows }}</span> of {{ num_all_rows }} results</p>
+        <button type="button" id="load_more_results">Load more</button>
+        <button type="button" id="back_to_top">Back to top</button>
+    </div>
+</div>
+    
+<!-- <script>
+    // Updates the form action URL when search parameter changes
+    function updateFormAction(searchParam) {
+        document.getElementById('search-form').action = '/search/' + searchParam + '/attributes';
+    }
+    
+    // Initialize form action on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchParam = document.getElementById('search-param').value;
+        updateFormAction(searchParam);
+    });
+</script> -->
+    
+    
+</body>
+</html>
