@@ -17,21 +17,9 @@
 <nav>
     <ul>
         <li><a href="/">Search Page</a></li>
-        <!-- <li><a href="/playlist">Your Playlist</a></li> -->
         <li><a href="/about/">About</a></li>
     </ul>
 </nav>
-
-<!-- <div>
-    <h2>Get new songs!</h2>
-    <form action="/answers">  Sends results to /answers path
-        <label="songName">Input Song Title:</label>
-        <input type="text" id="songName" name="songName">
-        <label="useGenre">Get Song of Same Genre?</label>
-        <input type="checkbox" id="useGenre" name="useGenre" value="use">
-        <input type="submit" value="Submit">
-    </form> 
-</div>  -->
 
 <div class="home_search_page">
     
@@ -51,13 +39,9 @@
                 <input type="submit" id="search_submit" value="">
              
             </div>
-            <!-- <div class="results"> 
-                Results... to be  with buttons to add to playlist
-            </div> -->
         </div>
 
         <div class="filters">
-            <!-- <p>FILTERS</p> -->
             <input type="submit" value="Apply Filters">
             <div class="text_filter_dropdown">
                 <div class="mainlabel">
@@ -128,7 +112,6 @@
         
                 <div class="mainlabel">
                     <label for="mode" class="mainlabel_text">Mode</label>
-                    <!-- <label class="mainlabel" for="mode">Mode</label> -->
                     <select id="mode" name="mode" for="mode" class="filter_dropdown">
                         <option value="">Any</option>
                         <option value="0">Minor</option>
@@ -308,20 +291,6 @@
         <button type="button" id="back_to_top">Back to top</button>
     </div>
 </div>
-    
-<!-- <script>
-    // Updates the form action URL when search parameter changes
-    function updateFormAction(searchParam) {
-        document.getElementById('search-form').action = '/search/' + searchParam + '/attributes';
-    }
-    
-    // Initialize form action on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchParam = document.getElementById('search-param').value;
-        updateFormAction(searchParam);
-    });
-</script> -->
-    
-    
+
 </body>
 </html>
