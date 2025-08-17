@@ -105,8 +105,6 @@ def add_args(parser):
                         help="""Restricts output to songs of given id.""")
     parser.add_argument("-r", "--artist", #type=str,
                         help="""Restricts output to songs from given artist.""")
-    # parser.add_argument("-l", "--album", #type=str,
-    #                     help="""Restricts output to songs from given album.""")
     parser.add_argument("-y", "--min_year", #type=str,
                         help="""Restricts output to songs released in given year.""")
     parser.add_argument("-Y", "--max_year", #type=str,
