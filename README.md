@@ -1,4 +1,4 @@
-## You can watch the website DEMO in the "demo" FOLDER
+## You can watch the website DEMO in the "demo" folder
 
 # Team Aurality ReadMe
 
