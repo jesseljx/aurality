@@ -1,3 +1,5 @@
+## You can watch the website DEMO in the "demo" FOLDER
+
 # Team Aurality ReadMe
 
 **Project Created By:**
@@ -6,7 +8,6 @@
 - Klaus Beasley
 - River Schmidt-Eder
 
-SEE OUR DEMO IN THE "demo" FOLDER
 
 ### How to run flask app
 
