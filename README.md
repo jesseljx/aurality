@@ -6,6 +6,8 @@
 - Klaus Beasley
 - River Schmidt-Eder
 
+SEE OUR DEMO IN THE "demo" FOLDER
+
 ### How to run flask app
 
     brew services start postgresql@14
