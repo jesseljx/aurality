@@ -152,7 +152,7 @@ Code smell: The original implementation hardcoded various constants (e.g., valid
 Pages used: flask_app.py, config.py\
 To address: Introduced config.py to store constants such as VALID_URL_ARGS, MIN_MAX_FIELDS, MAX_SONGS_TO_DISPLAY, and MIN_SONGS_TO_DISPLAY that is used in various files like flask_app and err_check.py. Refactored flask_app.py to import these values, ensuring easier updates and improving code aesthetic.
 
-## Code Smell #3 Naming & Commenting Issues
+## Code Smell #3 Naming & Commenting Issues:
 Code Smell: Inconsistent naming and unclear comments reduced code readability. Variables like search_param and search_string lacked clarity, and inputs were used inconsistently, so we changed it to search_by and substr to indicate that the search_by is the field name to perform the search on, and substr means each result should contain substr as a substring. Some docstrings were misleading, such as is_valid_bound, which incorrectly described its function.\
 Pages used: config.py, flask_app.py, app_database.py, command_line.py, input_validate.py, helper_func.py\
 To address: Renamed search_param to search_by, search_string to search_substr, and standardized inputs as attrs. Updated misleading docstrings and removed redundant comments for clarity.
